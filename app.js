@@ -17,9 +17,20 @@ app.use(cors());
 
 app.use('/api', api_routes);
 
-//connect with db
+//Either create your promise or you do something with promise
+
+//Mongoose is ODM (Object Data Model)
+//Mongoose.connect() will give u an promise
+
+// Promise: It is an placeholder of what happens when data comes back or you connected
+// externally with db
+
+//event callback
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log('DB connection estabilished');
   })
