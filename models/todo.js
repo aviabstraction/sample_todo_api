@@ -1,15 +1,16 @@
 //collections refers to table
 const mongoose = require('mongoose');
 
+//BSON format
+//collections refer to table
+//document refer to db
 //Schema => defining how should my collections look like
 
 const TodoSchema = new mongoose.Schema({
-  todoName: {
+  todo_name: {
     type: String,
-    required: true,
-    trim: true,
   },
-  todoTitle: {
+  todo_title: {
     type: String,
   },
   completed: {

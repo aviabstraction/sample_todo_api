@@ -22,7 +22,7 @@ app.use('/api', api_routes);
 //Mongoose is ODM (Object Data Model)
 //Mongoose.connect() will give u an promise
 
-// Promise: It is an placeholder of what happens when data comes back or you connected
+// Promise: It is an placeholder of what should happen when data comes back or you connected
 // externally with db
 
 //event callback
