@@ -16,6 +16,9 @@ const TodoSchema = new mongoose.Schema({
   completed: {
     type: Boolean,
   },
+  hobbies: {
+    type: Array,
+  },
 });
 
 module.exports = mongoose.model('Todo', TodoSchema);

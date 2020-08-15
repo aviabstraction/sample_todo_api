@@ -26,18 +26,23 @@ app.use('/api', api_routes);
 // externally with db
 
 //event callback
+
+console.log('first step logging');
+
 mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
+    console.log('third step logging');
     console.log('DB connection estabilished');
   })
   .catch(() => {
     console.log(`DB connection shows error`);
   });
 
+console.log('second step logging');
 const Port = process.env.PORT;
 
 app.listen(Port, () => {
