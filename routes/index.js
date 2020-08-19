@@ -10,6 +10,7 @@ const {
   myDeleteTodo,
   myUpdatedTodo,
 } = require('../controller/todo');
+const login = require('../controller/login');
 
 // import express from "express"
 
@@ -22,6 +23,8 @@ router.put('/todo/:id', myUpdatedTodo);
 router.delete('/todo/:id', myDeleteTodo);
 router.get('/todo/:id', myGetTodo);
 router.get('/todo', myGetAllTodos);
+//login
+router.post('/login', login);
 
 //export router to outside world
 module.exports = router;
