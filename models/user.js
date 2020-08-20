@@ -1,23 +1,29 @@
 //collections refers to table
 const mongoose = require('mongoose');
 
-//BSON format
-//collections refer to table
-//document refer to db
-//Schema => defining how should my collections look like
-
 const UserSchema = new mongoose.Schema({
-  user_name: {
+  name: {
     type: String,
+    required: true,
+    min: 6,
+    max: 255,
+  },
+  email: {
+    type: String,
+    required: true,
+    min: 6,
+    max: 255,
   },
   password: {
     type: String,
+    required: true,
+    max: 255,
+    min: 6,
+  },
+  date: {
+    type: Date,
+    default: Date.now(),
   },
 });
-
-// {
-//     user_name:"avinash",
-//     password:"xyz"
-// }
 
 module.exports = mongoose.model('User', UserSchema);

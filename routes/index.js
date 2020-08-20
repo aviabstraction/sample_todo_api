@@ -3,6 +3,7 @@ const express = require('express');
 // const myCreateTodo = require('../controller/todo').myCreateTodo;
 // const myGetAllTodos = require('../controller/todo').myGetAllTodos;
 
+//Todo imports
 const {
   myGetTodo,
   myCreateTodo,
@@ -10,7 +11,10 @@ const {
   myDeleteTodo,
   myUpdatedTodo,
 } = require('../controller/todo');
-const login = require('../controller/login');
+
+//login/register imports
+
+const { register, login } = require('../controller/user');
 
 // import express from "express"
 
@@ -24,7 +28,8 @@ router.delete('/todo/:id', myDeleteTodo);
 router.get('/todo/:id', myGetTodo);
 router.get('/todo', myGetAllTodos);
 //login
-router.post('/login', login);
+// router.post('/login', login);
+router.post('/register', register);
 
 //export router to outside world
 module.exports = router;

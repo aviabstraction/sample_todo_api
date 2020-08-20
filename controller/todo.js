@@ -21,14 +21,14 @@ const createTodo = (req, res) => {
 
   // };
   //shorthand syntax
-  const person = {
-    name,
-  };
+  // const person = {
+  //   name,
+  // };
 
   //destructuring
   // const { name } = person;
 
-  console.log(person.name);
+  // console.log(person.name);
 
   // const person = {
   //   name: 'Akilan',
@@ -78,25 +78,27 @@ const createTodo = (req, res) => {
   // console.log(name)
 
   // console.log(person.name);
-  console.log(person.likes.test.sample.xyz);
+  // console.log(person.likes.test.sample.xyz);
 
-  const { todoName, todoTitle, completed } = req.body;
+  const { todoName, todoTitle, completed, subTodo } = req.body;
 
   // const todoName = req.body.todoName
   // const todoTitle = req.body.todoTitle,
   // const completed = req.body.completed
 
-  // Todo.create({
-  //   todo_name: todoName,
-  //   todo_title: todoTitle,
-  //   completed: completed,
-  // })
-  //   .then((data) => {
-  //     console.log(data);
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
+  Todo.create({
+    todo_name: todoName,
+    todo_title: todoTitle,
+    completed: completed,
+    subTodo: subTodo,
+  })
+    .then((data) => {
+      console.log(data);
+      res.json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
   //Instantiate newTodo
 
@@ -106,16 +108,16 @@ const createTodo = (req, res) => {
     completed: completed,
   });
 
-  //saving to db
-  //Return a promise
-  newTodo
-    .save()
-    .then((data) => {
-      res.status(200).json(data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  // saving to db
+  // Return a promise
+  // newTodo
+  //   .save()
+  //   .then((data) => {
+  //     res.status(200).json(data);
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
 };
 
 //arrow functins

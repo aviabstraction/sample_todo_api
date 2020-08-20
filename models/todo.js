@@ -1,5 +1,6 @@
 //collections refers to table
 const mongoose = require('mongoose');
+const SubTodoSchema = require('./subtodo');
 
 //BSON format
 //collections refer to table
@@ -9,15 +10,23 @@ const mongoose = require('mongoose');
 const TodoSchema = new mongoose.Schema({
   todo_name: {
     type: String,
+    required: true,
   },
   todo_title: {
     type: String,
+    required: true,
   },
   completed: {
     type: Boolean,
+    required: true,
   },
-  hobbies: {
-    type: Array,
+  subTodo: {
+    type: [SubTodoSchema],
+    required: true,
+  },
+  created_at: {
+    type: Date,
+    default: Date.now(),
   },
 });
 
