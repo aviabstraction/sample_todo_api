@@ -1,6 +1,7 @@
 // import Todo from '../models/todo';
 const Todo = require('../models/todo');
-
+const User = require('../models/user');
+const SubTodo = require('../models/subtodo');
 //Create -Todo
 
 const createTodo = (req, res) => {
@@ -93,7 +94,8 @@ const createTodo = (req, res) => {
     subTodo: subTodo,
   })
     .then((data) => {
-      console.log(data);
+      // console.log(data, 'CreatedTodo');
+
       res.json(data);
     })
     .catch((err) => {
@@ -102,11 +104,11 @@ const createTodo = (req, res) => {
 
   //Instantiate newTodo
 
-  const newTodo = new Todo({
-    todo_name: todoName,
-    todo_title: todoTitle,
-    completed: completed,
-  });
+  // const newTodo = new Todo({
+  //   todo_name: todoName,
+  //   todo_title: todoTitle,
+  //   completed: completed,
+  // });
 
   // saving to db
   // Return a promise
@@ -137,10 +139,7 @@ const createTodo = (req, res) => {
 // }
 
 const getAllTodos = async (req, res) => {
-  //ES7
-  // const allTodos = await Todo.find();
-
-  // res.json(allTodos);
+  console.log('userid', req.user);
 
   Todo.find()
     .then((data) => {
@@ -184,10 +183,16 @@ function deleteTodo(req, res) {
 
 const updateTodo = async (req, res) => {
   const id = req.params.id;
+  const { todo_name, todo_title, subTodo, completed } = req.body;
 
-  const updatedTodo = await Todo.findByIdAndUpdate(id, req.body);
+  await Todo.findByIdAndUpdate(id, {
+    todo_name: todo_name,
+    todo_title: todo_title,
+    completed: completed,
+    subTodo: subTodo,
+  });
 
-  res.status(200).json({ sucess: true, data: updatedTodo });
+  res.status(200).json({ sucess: true });
 };
 
 // function createTodo(req, res) {

@@ -7,6 +7,8 @@ const SubTodoSchema = require('./subtodo');
 //document refer to db
 //Schema => defining how should my collections look like
 
+//subdocument association
+
 const TodoSchema = new mongoose.Schema({
   todo_name: {
     type: String,
@@ -22,7 +24,6 @@ const TodoSchema = new mongoose.Schema({
   },
   subTodo: {
     type: [SubTodoSchema],
-    required: true,
   },
   created_at: {
     type: Date,

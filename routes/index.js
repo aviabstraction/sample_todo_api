@@ -15,6 +15,10 @@ const {
 //login/register imports
 
 const { register, login } = require('../controller/user');
+// const login = require('../controller/user').login;
+
+// const verifyToken = require('../controller/verifytoken');
+const verifyToken = require('../controller/verifytoken');
 
 // import express from "express"
 
@@ -22,13 +26,35 @@ const router = express.Router();
 
 //localhost:7000/api/;
 
-router.post('/todo', myCreateTodo);
-router.put('/todo/:id', myUpdatedTodo);
-router.delete('/todo/:id', myDeleteTodo);
-router.get('/todo/:id', myGetTodo);
-router.get('/todo', myGetAllTodos);
+router.post(
+  '/todo',
+  //  verifyToken,
+  myCreateTodo
+);
+router.put(
+  '/todo/:id',
+  //  verifyToken,
+  myUpdatedTodo
+);
+router.delete(
+  '/todo/:id',
+  // verifyToken,
+  myDeleteTodo
+);
+router.get(
+  '/todo/:id',
+  //  verifyToken,
+  myGetTodo
+);
+//get all todos
+router.get(
+  '/todo',
+  //  verifyToken,
+  myGetAllTodos
+);
+//Verifytoken is a middleware
 //login
-// router.post('/login', login);
+router.post('/login', login);
 router.post('/register', register);
 
 //export router to outside world
